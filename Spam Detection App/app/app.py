@@ -14,12 +14,24 @@ vectorizer = joblib.load(VECTORIZER_PATH)
 @app.route("/", methods=["GET", "POST"])
 def home():
     prediction = None
+    probability = None
+
     if request.method == "POST":
         msg = request.form["message"]
         msg_vec = vectorizer.transform([msg])
+
         pred = model.predict(msg_vec)[0]
+        prob = model.predict_proba(msg_vec).max()
+
         prediction = "spam" if pred == 1 else "ham"
-    return render_template("index.html", prediction=prediction)
+        probability = round(prob * 100, 2)
+
+    return render_template(
+        "index.html",
+        prediction=prediction,
+        probability=probability
+    )
+
 
 @app.route("/predict", methods=["POST"])
 def predict():

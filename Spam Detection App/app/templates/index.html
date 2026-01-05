@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Spam Detection App</title>
-    <link rel="stylesheet" href="./static/styles.css">
+    <title>Spam Detection</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+
+<button class="toggle-btn" onclick="toggleTheme()">🌗</button>
+
 <div class="container">
-    <h1>📩 Spam Detection System</h1>
+    <h1>📩 Spam Detection</h1>
+
     <form method="post">
-        <textarea name="message" placeholder="Enter message here..." required></textarea>
+        <textarea name="message" placeholder="Enter message..." required></textarea>
         <button type="submit">Predict</button>
     </form>
 
@@ -16,7 +21,21 @@
         <div class="result {{ prediction }}">
             Prediction: {{ prediction | upper }}
         </div>
+
+        <div class="confidence">
+            Confidence: {{ probability }}%
+            <div class="bar">
+                <div class="fill" style="width: {{ probability }}%"></div>
+            </div>
+        </div>
     {% endif %}
 </div>
+
+<script>
+function toggleTheme() {
+    document.body.classList.toggle("dark");
+}
+</script>
+
 </body>
 </html>

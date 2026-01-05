@@ -1,47 +1,153 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Light mode */
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f6f8;
+    font-family: "Segoe UI", sans-serif;
+    min-height: 100vh;
+
+    background: linear-gradient(
+        rgba(0,0,0,0.5),
+        rgba(0,0,0,0.5)
+    ),
+    url("https://images.unsplash.com/photo-1551288049-bebda4e38f71")
+    center / cover no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: background 0.3s;
 }
 
-.container {
-    width: 400px;
-    margin: 80px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+/* Dark mode */
+body.dark {
+    background: #0f172a;
 }
 
-textarea {
-    width: 100%;
-    height: 100px;
-    margin-bottom: 10px;
-    padding: 8px;
-}
+/* Toggle button */
+.toggle-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
 
-button {
-    width: 100%;
-    padding: 10px;
-    background: #007bff;
+    font-size: 20px;
+    background: none;
     border: none;
-    color: white;
-    font-size: 16px;
     cursor: pointer;
 }
 
-.result {
-    margin-top: 15px;
-    padding: 10px;
+/* Main card */
+.container {
+    width: 420px;
+    max-width: 90%;
+    padding: 30px;
+
+    background: rgba(255,255,255,0.95);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+
     text-align: center;
+    animation: fade 0.7s ease;
+}
+
+/* Dark container */
+body.dark .container {
+    background: #020617;
+    color: #e5e7eb;
+}
+
+/* Title */
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Textarea */
+textarea {
+    width: 100%;
+    height: 120px;
+    padding: 12px;
+    font-size: 16px;
+
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: none;
+    margin-bottom: 15px;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 17px;
+    font-weight: 600;
+
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Prediction result */
+.result {
+    margin-top: 18px;
+    padding: 12px;
+    font-size: 18px;
     font-weight: bold;
+    border-radius: 8px;
 }
 
+/* Spam */
 .spam {
-    background: #ffcccc;
-    color: #a30000;
+    background: #fee2e2;
+    color: #991b1b;
 }
 
+/* Ham */
 .ham {
-    background: #ccffcc;
-    color: #006600;
+    background: #dcfce7;
+    color: #14532d;
+}
+
+/* Confidence section */
+.confidence {
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+/* Confidence bar */
+.bar {
+    height: 10px;
+    background: #e5e7eb;
+    border-radius: 5px;
+    margin-top: 6px;
+}
+
+.fill {
+    height: 100%;
+    background: linear-gradient(90deg, #22c55e, #16a34a);
+    border-radius: 5px;
+}
+
+/* Fade animation */
+@keyframes fade {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 22px;
+    }
+
+    textarea {
+        height: 100px;
+    }
 }
