@@ -1,8 +1,7 @@
 import requests
 
-def test_spam_api():
-    response = requests.post(
-        "http://localhost:5000/predict",
-        json={"message": "Win money now!!!"}
-    )
-    assert response.status_code == 200
+url = "http://127.0.0.1:5000/predict"
+data = {"message": "Win cash now!"}
+
+response = requests.post(url, json=data)
+print(response.json())

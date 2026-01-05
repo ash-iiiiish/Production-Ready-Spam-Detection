@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spam Detection App</title>
+    <link rel="stylesheet" href="./static/styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>📩 Spam Detection System</h1>
+    <form method="post">
+        <textarea name="message" placeholder="Enter message here..." required></textarea>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+        <div class="result {{ prediction }}">
+            Prediction: {{ prediction | upper }}
+        </div>
+    {% endif %}
+</div>
+</body>
+</html>
