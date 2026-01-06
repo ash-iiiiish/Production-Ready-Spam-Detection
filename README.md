@@ -139,8 +139,8 @@ Spam (High Confidence)
 
 ---
 
-## 👥 Contributors
-- 
+## 👨‍💻 Contributors
+- [@ash-iiiiish](https://github.com/ash-iiiiish)
 
 ---
 
