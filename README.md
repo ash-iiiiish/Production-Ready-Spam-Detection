@@ -14,21 +14,19 @@ It follows **real-world ML engineering practices**, covering data loading, prepr
 
 The system allows users to input text and receive a **Spam / Not Spam prediction** along with confidence insights.
 
----
-
 ## 📂 Project Structure
 
+```text
 Industrial-Style-ML-Model-Demo-main/
 ├── Spam Detection App/
-│   ├── app/                 # Flask web application
-│   ├── src/                 # ML pipeline (training, preprocessing, prediction)
-│   ├── data/                # Dataset and data loading scripts
-│   ├── artifacts/           # Trained model & vectorizer
-│   ├── tests/               # Unit tests
-│   ├── Dockerfile           # Docker configuration
-│   ├── requirements.txt     # Python dependencies
-│   └── README.md
-```
+│   ├── app/                 # Flask web application (routes, controllers, UI)
+│   ├── src/                 # Core ML pipeline (preprocessing, training, inference)
+│   ├── data/                # Datasets and data ingestion scripts
+│   ├── artifacts/           # Trained model and vectorizer artifacts
+│   ├── tests/               # Unit and integration tests
+│   ├── Dockerfile           # Docker configuration for containerized deployment
+│   ├── requirements.txt     # Python project dependencies
+│   └── README.md            # Application-level documentation
 
 ---
 
