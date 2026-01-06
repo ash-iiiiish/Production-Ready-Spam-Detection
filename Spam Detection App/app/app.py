@@ -11,20 +11,22 @@ VECTORIZER_PATH = os.path.join(PROJECT_ROOT, "artifacts", "vectorizer.pkl")
 model = joblib.load(MODEL_PATH)
 vectorizer = joblib.load(VECTORIZER_PATH)
 
+
 @app.route("/", methods=["GET", "POST"])
 def home():
     prediction = None
     probability = None
 
     if request.method == "POST":
-        msg = request.form["message"]
-        msg_vec = vectorizer.transform([msg])
+        msg = request.form.get("message")   # ✅ SAFE
 
-        pred = model.predict(msg_vec)[0]
-        prob = model.predict_proba(msg_vec).max()
+        if msg and msg.strip():             # ✅ VALIDATION
+            msg_vec = vectorizer.transform([msg])
+            pred = model.predict(msg_vec)[0]
+            prob = model.predict_proba(msg_vec).max()
 
-        prediction = "spam" if pred == 1 else "ham"
-        probability = round(prob * 100, 2)
+            prediction = "YES OFCOURSE SPAM" if pred == 1 else "It's NOT SPAM"
+            probability = round(prob * 100, 2)
 
     return render_template(
         "index.html",
@@ -35,11 +37,21 @@ def home():
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    data = request.get_json()
+    data = request.get_json(force=True)
     msg = data.get("message", "")
+
+    if not msg.strip():
+        return jsonify({"error": "Empty message"}), 400
+
     msg_vec = vectorizer.transform([msg])
     pred = model.predict(msg_vec)[0]
-    return jsonify({"prediction": "SPAM" if pred == 1 else "NOT SPAM"})
+    prob = model.predict_proba(msg_vec).max()
+
+    return jsonify({
+        "prediction": "SPAM" if pred == 1 else "NOT SPAM",
+        "confidence": round(prob * 100, 2)
+    })
+
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
