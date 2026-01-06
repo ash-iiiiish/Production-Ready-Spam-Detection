@@ -1,15 +1,23 @@
-# Industrial-Style Spam Detection ML Model
+# 🏭 Industrial-Style Spam Detection ML Model
+
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
+![Flask](https://img.shields.io/badge/Flask-Web%20App-black)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-ML-orange)
+![Docker](https://img.shields.io/badge/Docker-Containerized-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+---
 
 ## 📌 Project Overview
 This project demonstrates an **industrial-style Machine Learning pipeline** for detecting spam emails.  
-It covers data loading, preprocessing, model training, prediction, and deployment via a **Flask web application**, following best practices used in real-world ML systems.
+It follows **real-world ML engineering practices**, covering data loading, preprocessing, model training, inference, and deployment using a **Flask web application**.
 
-The application allows users to input text and receive a **spam or not-spam prediction** using a trained ML model.
+The system allows users to input text and receive a **Spam / Not Spam prediction** along with confidence insights.
 
 ---
 
 ## 📂 Project Structure
-```
+
 Industrial-Style-ML-Model-Demo-main/
 ├── Spam Detection App/
 │   ├── app/                 # Flask web application
