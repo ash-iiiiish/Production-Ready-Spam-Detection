@@ -29,6 +29,7 @@ Industrial-Style-ML-Model-Demo-main/
 │   └── README.md            # Application-level documentation
 
 ---
+```
 
 ## 🚀 Features
 - End-to-end ML workflow (data → training → inference)
